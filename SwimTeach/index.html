@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, orientation=landscape">
+  <meta charset="UTF-8">
+  <title>Swim Lap Tracker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app">
+    <div class="header">
+      <div class="stopwatch">
+        <span id="stopwatch-time">00:00.00</span>
+        <button id="stopwatch-btn">Start</button>
+      </div>
+      <div class="fastest-lap">
+        Fastest Lap: <span id="fastest-lap-time">--:--.--</span>
+      </div>
+    </div>
+    <div class="bars-container" id="bars-container"></div>
+    <div id="celebration" class="celebration hidden">
+      <div class="confetti"></div>
+      <div class="celebration-text">Great Job!</div>
+    </div>
+    <div id="swipe-menu" class="swipe-menu hidden">
+      <div class="menu-content">
+        <h3>Lap Controls</h3>
+        <button id="add-bar">Add Lap</button>
+        <button id="remove-bar">Remove Lap</button>
+        <div id="toggle-bar-list"></div>
+      </div>
+    </div>
+  </div>
+  <audio id="celebration-sound" src="" preload="auto"></audio>
+  <script src="app.js"></script>
+</body>
+</html> 
