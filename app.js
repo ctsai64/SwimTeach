@@ -56,9 +56,16 @@ function updateFastestLapDisplay() {
 // --- Bar Rendering ---
 function renderBars() {
   barsContainer.innerHTML = '';
+  let fastestIndex = null;
+  if (fastestLap !== null) {
+    fastestIndex = lapTimes.findIndex(t => t === fastestLap);
+  }
   bars.forEach((bar, i) => {
     const barDiv = document.createElement('div');
-    barDiv.className = 'bar' + (bar.filled ? ' filled' : '');
+    let barClass = 'bar';
+    if (bar.filled) barClass += ' filled';
+    if (fastestIndex !== null && i === fastestIndex && bar.filled) barClass += ' fastest';
+    barDiv.className = barClass;
     barDiv.style.setProperty('--bar-color', currentPalette[0]);
     barDiv.dataset.index = i;
     const barInner = document.createElement('div');
@@ -118,11 +125,12 @@ function fillNextBar(lapTime) {
   bars[next].filled = true;
   animateBarFill(next);
   filledCount++;
-  lapTimes.push(lapTime);
+  lapTimes[next] = lapTime;
   if (fastestLap === null || lapTime < fastestLap) {
     fastestLap = lapTime;
     updateFastestLapDisplay();
   }
+  renderBars();
   if (filledCount === bars.length) {
     setTimeout(() => {
       celebrate();
@@ -280,9 +288,6 @@ function updateToggleBarList() {
       } else {
         filledCount--;
         barsContainer.children[i].classList.remove('filled');
-      }
-      if (filledCount === bars.length) {
-        setTimeout(() => celebrate(), 700);
       }
       renderBars();
       updateToggleBarList();
