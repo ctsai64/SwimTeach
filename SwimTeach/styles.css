@@ -17,25 +17,34 @@ body {
 .header {
   width: 100vw;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 1.5vw 4vw 0 4vw;
-  font-size: 2.5vw;
+  padding: 4vw 0 0 0;
+  font-size: 3vw;
+  height: 28vh;
+  min-height: 120px;
+}
+.stopwatch-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 .stopwatch {
   display: flex;
   align-items: center;
-  gap: 2vw;
+  gap: 3vw;
+  margin-bottom: 2vw;
 }
 #stopwatch-time {
-  font-size: 4vw;
+  font-size: 7vw;
   font-weight: bold;
   letter-spacing: 0.1em;
 }
 #stopwatch-btn {
-  font-size: 2.5vw;
-  padding: 1vw 3vw;
-  border-radius: 2vw;
+  font-size: 3vw;
+  padding: 2vw 5vw;
+  border-radius: 3vw;
   border: none;
   background: #4fc3f7;
   color: #fff;
@@ -47,25 +56,26 @@ body {
   background: #0288d1;
 }
 .fastest-lap {
-  font-size: 2.5vw;
+  font-size: 3vw;
   color: #888;
+  margin-top: 1vw;
 }
 .bars-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 3vw;
-  width: 90vw;
-  height: 30vw;
+  gap: 5vw;
+  width: 96vw;
+  height: 45vh;
   margin: 0 auto;
-  margin-top: 4vw;
-  margin-bottom: 4vw;
+  margin-top: 2vw;
+  margin-bottom: 2vw;
 }
 .bar {
-  width: 7vw;
-  height: 24vw;
-  border-radius: 4vw;
+  width: 10vw;
+  height: 38vh;
+  border-radius: 5vw;
   background: #e0e0e0;
   box-shadow: 0 2px 8px rgba(0,0,0,0.07);
   position: relative;
@@ -79,7 +89,7 @@ body {
 .bar-inner {
   width: 100%;
   height: 0%;
-  border-radius: 4vw 4vw 0 0;
+  border-radius: 5vw 5vw 0 0;
   background: var(--bar-color, #4fc3f7);
   transition: height 0.6s cubic-bezier(.68,-0.55,.27,1.55), background 0.4s;
   box-shadow: 0 4px 16px rgba(0,0,0,0.10);
@@ -189,14 +199,18 @@ body {
   body {
     font-size: 2vw;
   }
+  .header {
+    height: 18vh;
+    min-height: 80px;
+  }
   .bars-container {
     flex-direction: column;
-    width: 90vw;
+    width: 96vw;
     height: 60vw;
   }
   .bar {
-    width: 24vw;
-    height: 7vw;
-    border-radius: 4vw;
+    width: 38vh;
+    height: 10vw;
+    border-radius: 5vw;
   }
 } 

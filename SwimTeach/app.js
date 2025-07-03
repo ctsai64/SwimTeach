@@ -36,8 +36,8 @@ const toggleBarList = document.getElementById('toggle-bar-list');
 // --- Utility Functions ---
 function pickPalette() {
   const palette = COLOR_PALETTES[Math.floor(Math.random() * COLOR_PALETTES.length)];
-  // Shuffle palette for variety
-  return palette.slice().sort(() => Math.random() - 0.5);
+  // Pick a single color for the set
+  return [palette[Math.floor(Math.random() * palette.length)]];
 }
 function formatTime(ms) {
   const min = Math.floor(ms / 60000);
@@ -59,7 +59,7 @@ function renderBars() {
   bars.forEach((bar, i) => {
     const barDiv = document.createElement('div');
     barDiv.className = 'bar' + (bar.filled ? ' filled' : '');
-    barDiv.style.setProperty('--bar-color', currentPalette[i % currentPalette.length]);
+    barDiv.style.setProperty('--bar-color', currentPalette[0]);
     barDiv.dataset.index = i;
     const barInner = document.createElement('div');
     barInner.className = 'bar-inner';
@@ -73,7 +73,7 @@ function animateBarFill(index) {
   if (!barDiv) return;
   barDiv.classList.add('filled');
   setTimeout(() => {
-    barDiv.querySelector('.bar-inner').style.background = currentPalette[index % currentPalette.length];
+    barDiv.querySelector('.bar-inner').style.background = currentPalette[0];
   }, 100);
 }
 
@@ -177,7 +177,7 @@ function showConfetti() {
     piece.style.top = (Math.random() * 10 + 5) + 'vw';
     piece.style.width = '1.2vw';
     piece.style.height = '3vw';
-    piece.style.background = currentPalette[i % currentPalette.length];
+    piece.style.background = currentPalette[0];
     piece.style.borderRadius = '0.6vw';
     piece.style.transform = `rotate(${Math.random()*360}deg)`;
     piece.style.opacity = 0.85;
